@@ -24,4 +24,10 @@ public class Notebook {
         this.id = UUID.randomUUID();
         this.notes = new ArrayList<>();
     }
+
+    public Notebook(String name) {
+        this.id = UUID.randomUUID();
+        this.notes = new ArrayList<>();
+        this.name = name;
+    }
 }
