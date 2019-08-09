@@ -20,14 +20,21 @@ public class Notebook {
     @JsonIgnore
     private List<Note> notes;
 
-    public Notebook() {
+    protected Notebook() {
         this.id = UUID.randomUUID();
         this.notes = new ArrayList<>();
     }
 
     public Notebook(String name) {
-        this.id = UUID.randomUUID();
-        this.notes = new ArrayList<>();
+        this();
+        this.name = name;
+    }
+
+    public Notebook(String id, String name) {
+        this();
+        if (id != null) {
+            this.id = UUID.fromString(id);
+        }
         this.name = name;
     }
 }

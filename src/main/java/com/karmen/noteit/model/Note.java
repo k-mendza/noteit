@@ -23,16 +23,22 @@ public class Note {
 
     private Date lastModifiedDate;
 
-    public Note() {
+    protected Note() {
         this.id = UUID.randomUUID();
         this.lastModifiedDate = new Date();
     }
 
     public Note(String title, String text, Notebook notebook) {
-        this.id = UUID.randomUUID();
-        this.lastModifiedDate = new Date();
+        this();
         this.title = title;
         this.text = text;
         this.notebook = notebook;
+    }
+
+    public Note(String id, String title, String text, Notebook notebook) {
+        this(title, text, notebook);
+        if (id != null) {
+            this.id = UUID.fromString(id);
+        }
     }
 }
