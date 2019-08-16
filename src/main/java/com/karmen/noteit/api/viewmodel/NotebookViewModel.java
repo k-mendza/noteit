@@ -13,5 +13,5 @@ public class NotebookViewModel {
     @NotNull
     private String name;
 
-    private int nbNotes;
+    private int numberOfNotes;
 }
