@@ -23,4 +23,38 @@ export class NotesComponent implements OnInit {
       error => {alert('Error while fetching data from database')}
     );
   }
+
+  createNotebook() {
+    let notebook: Notebook = {
+      id: null,
+      name: 'New notebook',
+      numberOfNotes: 0
+    };
+    this.apiService.postNotebook(notebook).subscribe(
+      res => {
+        notebook.id = res.id;
+        this.notebooks.push(notebook);
+      },
+      error => {alert('An error has occurred while saving the notebook')}
+    );
+  }
+
+  updateNotebook(notebookToBeUpdated: Notebook) {
+    this.apiService.postNotebook(notebookToBeUpdated).subscribe(
+      res => {},
+      error => {alert('An error has occurred while saving the notebook')}
+    );
+  }
+
+  deleteNotebook(notebookToBeDeleted: Notebook) {
+    if (confirm('Are you sure you want to delete this Notebook?')){
+      this.apiService.deleteNotebook(notebookToBeDeleted.id).subscribe(
+        res => {
+          let indexOfNotebook = this.notebooks.indexOf(notebookToBeDeleted);
+          this.notebooks.splice(indexOfNotebook, 1);
+        },
+        error => {alert('Could not delete selected Notebook')}
+      )
+    }
+  }
 }
