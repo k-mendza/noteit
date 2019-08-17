@@ -40,7 +40,7 @@ public class Mapper {
         var viewModel = new NotebookViewModel();
         viewModel.setId(entity.getId().toString());
         viewModel.setName(entity.getName());
-        viewModel.setNbNotes(entity.getNotes().size());
+        viewModel.setNumberOfNotes(entity.getNotes().size());
 
         return viewModel;
     }
