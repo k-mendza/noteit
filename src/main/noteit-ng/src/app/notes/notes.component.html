@@ -3,13 +3,12 @@
   <div class="row" style="margin-top:12px;">
     <div class="col-md-8">
       <input type="text"
-             [(ngModel)]="searchText"
              class="form-control"
              style="width: 100%;"
              placeholder="Search notes...">
     </div>
     <div class="col-md-4">
-      <button type="buton"
+      <button type="button"
               (click)="createNotebook()"
               class="btn btn-info pull-right"
               style="margin-left:12px;"><i class="fa fa-plus"></i> New notebook
@@ -56,11 +55,11 @@
       </div>
       <div class="row">
         <!-- Note list -->
-        <app-note *ngFor="let n of notes | noteTextFilter:searchText"
-                  [note]="n"
-                  (noteUpdated)="updateNote($event)"
-                  (noteDeleted)="deleteNote($event)">
-        </app-note>
+<!--        <app-note *ngFor="let n of notes"-->
+<!--                  [note]="n"-->
+<!--                  (noteUpdated)="updateNote(notes)"-->
+<!--                  (noteDeleted)="deleteNote($event)">-->
+<!--        </app-note>-->
       </div>
     </div>
   </div>
