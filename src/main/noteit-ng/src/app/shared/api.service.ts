@@ -17,7 +17,7 @@ export class ApiService {
   private DELETE_NOTEBOOK_URL = this.BASE_URL + '/notebooks';
   // Notes URLS:
   private ALL_NOTES_URL = this.BASE_URL + '/notes/all';
-  private NOTES_BY_NOTEBOOK_URL = this.BASE_URL + 'notes/byNotebook';
+  private NOTES_BY_NOTEBOOK_URL = this.BASE_URL + '/notes/byNotebook';
   private SAVE_UPDATE_NOTE_URL = this.BASE_URL + '/notes';
   private DELETE_NOTE_URL = this.BASE_URL + '/notes';
 

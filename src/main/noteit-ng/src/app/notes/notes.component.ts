@@ -119,7 +119,7 @@ export class NotesComponent implements OnInit {
           let indexOfNote = this.notes.indexOf(noteToBeDeleted);
           this.notes.splice(indexOfNote, 1);
         },
-        error => {alert('An error has occurred while deleting the note')}
+        error => {alert('An error has occurre1d while deleting the note')}
       )
     }
   }
