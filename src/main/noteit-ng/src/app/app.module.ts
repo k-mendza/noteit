@@ -10,6 +10,7 @@ import { RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { NoteComponent } from './notes/note/note.component';
+import { NoteTextFilterPipe } from './shared/note-text-filter.pipe';
 
 const routes: Routes = [
   {path: 'notes', component: NotesComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
     FeedbackComponent,
     NotesComponent,
     NotFoundComponent,
-    NoteComponent
+    NoteComponent,
+    NoteTextFilterPipe
   ],
   imports: [
     BrowserModule,

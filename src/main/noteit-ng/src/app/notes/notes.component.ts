@@ -12,6 +12,7 @@ export class NotesComponent implements OnInit {
   notebooks: Notebook[] = [];
   notes: Note[] = [];
   selectedNotebook: Notebook;
+  searchText: string;
 
   constructor(private apiService: ApiService) { }
 
@@ -27,6 +28,16 @@ export class NotesComponent implements OnInit {
       },
       error => {alert('Error while fetching data from database')}
     );
+  }
+
+  selectNotebook(selectedNotebook: Notebook) {
+    this.selectedNotebook = selectedNotebook;
+    this.apiService.getNotesByNotebook(selectedNotebook.id).subscribe(
+      res => {
+        this.notes = res;
+      },
+      error => {alert('An error has occurred while fetching notes for selected notebook')}
+    )
   }
 
   createNotebook() {
@@ -72,13 +83,18 @@ export class NotesComponent implements OnInit {
     )
   }
 
+  selectAllNotes() {
+    this.selectedNotebook = null;
+    this.getAllNotes();
+  }
+
   createNote(id: string) {
     let newNote: Note = {
-      lastModifiedOn: null,
-      notebookId: id,
-      text: "Write your note here",
       id: null,
-      title: 'New note'
+      title: 'New note',
+      text: "Write your note here",
+      lastModifiedOn: null,
+      notebookId: id
     };
     this.apiService.saveNote(newNote).subscribe(
       res => {
@@ -87,21 +103,6 @@ export class NotesComponent implements OnInit {
       },
       error => {alert('An error occurred while saving the note')}
     )
-  }
-
-  selectNotebook(selectedNotebook: Notebook) {
-    this.selectedNotebook = selectedNotebook;
-    this.apiService.getNotesByNotebook(selectedNotebook.id).subscribe(
-      res => {
-        this.notes = res;
-      },
-      error => {alert('An error has occurred while fetching notes for selected notebook')}
-    )
-  }
-
-  selectAllNotes() {
-    this.selectedNotebook = null;
-    this.getAllNotes();
   }
 
   updateNote(noteToBeUpdated: Note) {
@@ -119,7 +120,7 @@ export class NotesComponent implements OnInit {
           let indexOfNote = this.notes.indexOf(noteToBeDeleted);
           this.notes.splice(indexOfNote, 1);
         },
-        error => {alert('An error has occurre1d while deleting the note')}
+        error => {alert('An error has occurred while deleting the note')}
       )
     }
   }
